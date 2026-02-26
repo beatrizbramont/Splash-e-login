@@ -1,42 +1,28 @@
-const loginBtn = document.getElementById("login-btn");
-const message  = document.getElementById("message");
-
-loginBtn.addEventListener("click", async () => {
+function login() {
     const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const senha = document.getElementById("password").value; // ← corrigido aqui
 
-    message.textContent = "Carregando...";
-    message.style.color = "#ffa500";
+    fetch("http://127.0.0.1:5000/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, senha })
+    })
+    .then(response => response.json())
+    .then(data => {
 
-    try {
-        const response = await fetch("https://reqres.in/api/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email,
-                password
-            })
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            message.textContent = "Login bem-sucedido! ✅";
-            message.style.color = "#00ff7f";
-
-            localStorage.setItem("token", data.token);
-
-            setTimeout(() => {
-                window.location.href = "/html/index.html";
-            }, 1000);
-        } else {
-            message.textContent = data.error || "Falha no login ❌";
-            message.style.color = "#ff4b4b";
+        if (data.redirect === "cadastro") {
+            alert("Usuário não encontrado. Faça o cadastro.");
+            window.location.href = "/cadastro";
+            return;
         }
-    } catch (err) {
-        message.textContent = "Erro de conexão ❌";
-        message.style.color = "#ff4b4b";
-    }
-});
+
+        if (data.message) {
+            localStorage.setItem("user_id", data.user_id);
+            window.location.href = "/otp";
+        } else {
+            alert(data.error);
+        }
+    });
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Login - TableTrack</title>
 
-    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 <body>
 
@@ -19,11 +19,13 @@
         <input id="password" type="password" placeholder="Senha" required>
     </div>
 
-    <button id="login-btn">Login</button>
+    <button onclick="login()">Login</button>
+    <a href="/cadastro">Não conseguiu acessar? Cadastre-se</a>
 
     <p id="message"></p>
 </div>
 
-<script src="../js/login.js"></script>
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+
 </body>
 </html>

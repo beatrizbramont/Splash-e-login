@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificação OTP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/otp.css') }}">
+</head>
+<body>
+
+<h2>Digite o código OTP</h2>
+
+<input type="text" id="code" placeholder="Código de 6 dígitos">
+<button onclick="verificarOTP()">Verificar</button>
+
+<script src="../static/js/otp.js"></script>
+
+</body>
+</html>
