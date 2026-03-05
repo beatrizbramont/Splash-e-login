@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TableTrack</title>
+
+    <link rel="stylesheet" href="../static/css/splash.css">
 </head>
 <body>
-    <h1> Bem vindo </h1>
+
+<div class="splash-container">
+
+    <img 
+        src="../static/img/tabletrack_logobranca.png"
+        class="logo"
+        alt="logo"
+    >
+
+    <div class="loader-ring"></div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/splash.js') }}"></script>
+
 </body>
 </html>

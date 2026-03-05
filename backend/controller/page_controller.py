@@ -4,7 +4,7 @@ page_bp = Blueprint("pages", __name__)
 
 @page_bp.route("/")
 def splash():
-    return render_template("splash.html")
+    return render_template("index.html")
 
 @page_bp.route("/login")
 def login_page():
@@ -20,4 +20,4 @@ def otp_page():
 
 @page_bp.route("/index")
 def index():
-    return render_template("index.html")
+    return render_template("home.html")
